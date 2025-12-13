@@ -2,6 +2,7 @@ import json
 from django.http import JsonResponse
 from .models import Genre
 from  django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 @csrf_exempt
@@ -30,6 +31,6 @@ def genre_create_list_view(request):
 
 @csrf_exempt
 def genre_detail_view(request, id):
-    genre = Genre.objects.get(pk=id)
+    genre = get_object_or_404(Genre, pk=id)
     data = {'id': genre.id, 'name': genre.name}
     return JsonResponse(data)
