@@ -5,7 +5,7 @@ from  django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 @csrf_exempt
-def genre_view(request):
+def genre_create_list_view(request):
     if request.method == 'GET':
         genres = Genre.objects.all()
         genre_list = [
@@ -27,3 +27,9 @@ def genre_view(request):
             },
             status=201,
         )
+
+@csrf_exempt
+def genre_detail_view(request, id):
+    genre = Genre.objects.get(pk=id)
+    data = {'id': genre.id, 'name': genre.name}
+    return JsonResponse(data)
