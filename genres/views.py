@@ -55,7 +55,7 @@ def genre_detail_update_delete_view(request, id):
 
         return JsonResponse(
             {
-                'message': 'Genero Deletado com Sucesso',
+                'message': 'Genero Deletado com Sucesso'
             },
-            status=204,
+            status=202,
         )
