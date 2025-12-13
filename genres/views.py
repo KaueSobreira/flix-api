@@ -30,7 +30,32 @@ def genre_create_list_view(request):
         )
 
 @csrf_exempt
-def genre_detail_view(request, id):
+def genre_detail_update_delete_view(request, id):
     genre = get_object_or_404(Genre, pk=id)
-    data = {'id': genre.id, 'name': genre.name}
-    return JsonResponse(data)
+
+    if request.method == 'GET':
+        data = {'id': genre.id, 'name': genre.name}
+        return JsonResponse(data)
+
+    elif request.method == 'PUT':
+        data = json.loads(request.body.decode('utf-8'))
+        genre.name = data['name']
+        genre.save()
+        return JsonResponse(
+            {
+                'message': 'Genero atualizado com Sucesso',
+                'id': genre.id,
+                'name': genre.name
+            },
+            status=201,
+        )
+    
+    elif request.method == 'DELETE':
+        genre.delete()
+
+        return JsonResponse(
+            {
+                'message': 'Genero Deletado com Sucesso',
+            },
+            status=204,
+        )
