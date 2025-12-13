@@ -4,7 +4,7 @@ from .models import Genre
 from  django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 
-# Create your views here.
+
 @csrf_exempt
 def genre_create_list_view(request):
     if request.method == 'GET':
