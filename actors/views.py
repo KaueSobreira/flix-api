@@ -1,6 +1,6 @@
 from rest_framework import generics
 from actors.models import Actor
-from serializers import ActorSerializer
+from actors.serializers import ActorSerializer
 
 class ActorCreateListView(generics.ListCreateAPIView):
     queryset = Actor.objects.all()
