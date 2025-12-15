@@ -3,6 +3,6 @@ from movies.models import Movie
 
 class MovieSerializer(serializers.ModelSerializer):
     
-    class meta:
+    class Meta:
         model = Movie
         fields = '__all__'
