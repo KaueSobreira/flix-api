@@ -41,11 +41,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
 
+    'drf_spectacular',
+
     'genres',
     'actors',
     'movies',
     'reviews',
     'authentication',
+    'docs',
 ]
 
 MIDDLEWARE = [
@@ -127,7 +130,18 @@ STATIC_URL = 'static/'
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Flix-Api',
+    'DESCRIPTION': 'API Rest Ful feita em Django',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_SETTINGS': {
+        'defaultModelsExpandDepth': -1,
+    },
 }
