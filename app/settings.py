@@ -138,7 +138,7 @@ REST_FRAMEWORK = {
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Flix-Api',
-    'DESCRIPTION': 'API Rest Ful feita em Django Treinando conceitos',
+    'DESCRIPTION': 'API RESTful construída com Django e Django REST Framework, explorando conceitos como autenticação, versionamento e boas práticas de arquitetura.',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'SWAGGER_UI_SETTINGS': {
