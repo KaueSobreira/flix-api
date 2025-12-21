@@ -21,7 +21,7 @@ class MovieSerializer(serializers.ModelSerializer):
 
             return round(media, 1)
 
-        return None
+        return "Esse filme não tem avaliação"
 
     # def validate_release_date(self, value):
     #     if value.year < 1900:
