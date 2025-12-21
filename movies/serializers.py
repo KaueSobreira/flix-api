@@ -9,7 +9,7 @@ class MovieSerializer(serializers.ModelSerializer):
         model = Movie
         fields = '__all__'
 
-    def get_rate(self, obj):
+    def get_rate(self, obj) -> float:
         rate = obj.reviews.aggregate(Avg('stars'))['stars__avg']
 
         if rate:
