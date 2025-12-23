@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'docs',
     'groups',
     'users',
+    'permissions',
 ]
 
 MIDDLEWARE = [
