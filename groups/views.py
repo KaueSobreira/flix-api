@@ -10,6 +10,7 @@ class GroupCreateListView(generics.ListCreateAPIView):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
+
 class GroupRetrieveDestroyUpdateListView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated, GlobalDefaultPermission,)
     queryset = Group.objects.all()

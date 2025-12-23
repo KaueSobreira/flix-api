@@ -1,6 +1,6 @@
-from pyexpat import model
 from rest_framework import serializers
 from actors.models import Actor
+
 
 class ActorSerializer(serializers.ModelSerializer):
 

@@ -1,4 +1,3 @@
-from ast import Attribute
 from rest_framework import permissions
 
 
