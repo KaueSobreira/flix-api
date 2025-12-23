@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'reviews',
     'authentication',
     'docs',
+    'groups',
+    'users',
 ]
 
 MIDDLEWARE = [

@@ -17,4 +17,6 @@ urlpatterns = [
     path('api/v1/', include('docs.urls')),
 
     path('api/v1/', include('groups.urls')),
+
+    path('api/v1/', include('users.urls')),
 ]
