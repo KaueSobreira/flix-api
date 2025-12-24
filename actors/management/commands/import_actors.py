@@ -20,7 +20,7 @@ class Command(BaseCommand):
             reader = csv.DictReader(file)
 
             for row in reader:
-                name  = row['name']
+                name = row['name']
                 birthday = datetime.strptime(row['birthday'], '%Y-%m-%d').date()
                 nationality = row['nationality']
 
@@ -30,6 +30,6 @@ class Command(BaseCommand):
                     name=name,
                     birthday=birthday,
                     nationality=nationality
-                )   
+                )
 
         self.stdout.write(self.style.SUCCESS('ATORES IMPORTADO COM SUCESSO!'))
