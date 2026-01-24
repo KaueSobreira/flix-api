@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: flix_db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-flix_db}
+      POSTGRES_USER: ${POSTGRES_USER:-flix_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-flix_password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-flix_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: .
+    container_name: flix_api
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "${PORT:-8000}:8000"
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=${POSTGRES_DB:-flix_db}
+      - DB_USER=${POSTGRES_USER:-flix_user}
+      - DB_PASSWORD=${POSTGRES_PASSWORD:-flix_password}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
